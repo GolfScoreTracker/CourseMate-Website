@@ -409,6 +409,7 @@ export default function Home() {
             {steps.map((step) => (
               <div key={step.n} style={{ display: "flex", flexDirection: "column" }}>
                 <div
+                  className="step-phone"
                   style={{
                     width: "100%",
                     maxWidth: 216,
@@ -432,6 +433,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div
+                  className="step-caption"
                   style={{
                     borderTop: "2px solid var(--ink)",
                     paddingTop: 16,

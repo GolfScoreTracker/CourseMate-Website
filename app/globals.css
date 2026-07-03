@@ -78,6 +78,14 @@ section[id] {
   .nav-links {
     display: none !important;
   }
+  /* Steps stack on small screens: caption (number + title) above, image below */
+  .step-caption {
+    order: -1;
+    margin-bottom: 20px;
+  }
+  .step-phone {
+    margin-bottom: 10px !important;
+  }
   .hero-grid,
   .steps-grid,
   .pricing-grid {
