@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Oswald:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  section[id] { scroll-margin-top: 88px; }
+  ::selection { background: #C56A28; color: #F0E5CF; }
+</style>
+</helmet>
+
+<div style="--paper:#F0E5CF; --paper2:#E7DBC0; --green:#2E5E3A; --green-d:#25482f; --ink:#3a2417; --orange:#C56A28; --gold:#E6B45A; --muted:#9a8160; --muted2:#8a6f52; --divider:#d6c39c; --dash:#cdb793; --bodysoft:#6f5a3f; background:var(--paper); color:var(--ink); font-family:'Hanken Grotesk',sans-serif; min-height:100vh; overflow-x:hidden;">
+
+  <!-- ===== NAV ===== -->
+  <nav style="position:sticky; top:0; z-index:50; background:rgba(240,229,207,.9); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--divider);">
+    <div style="max-width:1160px; margin:0 auto; padding:16px 40px; display:flex; align-items:center; justify-content:space-between;">
+      <a href="#top" style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--green); text-decoration:none;">CourseMate</a>
+      <div style="display:flex; flex:1; justify-content:center; align-items:center; gap:34px; margin:0 28px;">
+        <sc-for list="{{ navlinks }}" as="link" hint-placeholder-count="4">
+          <a href="{{ link.href }}" data-nav="true" style="font-family:'Oswald',sans-serif; font-weight:500; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink); text-decoration:none; padding-bottom:3px; border-bottom:2px solid transparent; transition:color .2s ease, border-color .2s ease;">{{ link.label }}</a>
+        </sc-for>
+      </div>
+      <a href="#download" style="font-family:'Oswald',sans-serif; font-weight:600; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--paper); background:var(--green); padding:12px 22px; border-radius:8px; text-decoration:none; transition:transform .15s ease, background .2s ease;" style-hover="transform:translateY(-1px); background:var(--green-d);">Get the app</a>
+    </div>
+  </nav>
+
+  <div id="top" style="max-width:1160px; margin:0 auto; padding:0 40px;">
+
+    <!-- ===== HERO ===== -->
+    <div style="display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center; padding:68px 0 44px;">
+      <div>
+        <div style="font-family:'Oswald',sans-serif; font-weight:600; font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:var(--orange);">Golf Club · Members</div>
+        <h1 style="font-family:'DM Serif Display',serif; font-size:66px; line-height:.98; color:var(--ink); margin:16px 0 0; letter-spacing:-.01em;">Golf's better <span style="color:var(--green); font-style:italic;">with mates.</span></h1>
+        <p style="font-size:18px; line-height:1.6; color:var(--bodysoft); max-width:460px; margin:22px 0 0;">CourseMate keeps your card, plays nice with the group, and reads the round back to you — no faff. Set up in seconds and get back to the swing of things.</p>
+        <div style="display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;">
+          <a href="#download" aria-label="Download on the App Store" style="display:inline-flex; align-items:center; gap:12px; background:var(--ink); color:var(--paper); padding:11px 22px; border-radius:12px; text-decoration:none; transition:transform .15s ease;" style-hover="transform:translateY(-2px)">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="flex:none"><path d="M17.05 12.54c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.16-.47 7.83 1.3 10.4.86 1.25 1.89 2.66 3.24 2.61 1.3-.05 1.79-.84 3.36-.84s2.01.84 3.39.81c1.4-.02 2.29-1.28 3.15-2.54.99-1.46 1.4-2.87 1.42-2.94-.03-.02-2.72-1.05-2.75-4.14zM14.9 4.6c.72-.87 1.2-2.08 1.07-3.28-1.03.04-2.28.68-3.02 1.55-.66.77-1.24 2-1.09 3.18 1.15.09 2.32-.58 3.06-1.45z"/></svg>
+            <span style="display:flex; flex-direction:column; line-height:1.15; text-align:left;">
+              <span style="font-family:'Oswald',sans-serif; font-weight:500; font-size:9px; letter-spacing:.14em; text-transform:uppercase; opacity:.82;">Download on the</span>
+              <span style="font-family:'DM Serif Display',serif; font-size:18px;">App Store</span>
+            </span>
+          </a>
+          <a href="#download" aria-label="Get it on Google Play" style="display:inline-flex; align-items:center; gap:12px; background:var(--ink); color:var(--paper); padding:11px 22px; border-radius:12px; text-decoration:none; transition:transform .15s ease;" style-hover="transform:translateY(-2px)">
+            <svg viewBox="0 0 24 24" width="24" height="24" style="flex:none"><line x1="7.4" y1="2.7" x2="8.9" y2="4.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="16.6" y1="2.7" x2="15.1" y2="4.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M4.4 11a7.6 7.6 0 0 1 15.2 0z" fill="currentColor"/><circle cx="9" cy="7.9" r="1" fill="var(--ink)"/><circle cx="15" cy="7.9" r="1" fill="var(--ink)"/><rect x="4.4" y="12" width="15.2" height="7.5" rx="1.6" fill="currentColor"/><rect x="2" y="12.4" width="2.5" height="6.2" rx="1.25" fill="currentColor"/><rect x="19.5" y="12.4" width="2.5" height="6.2" rx="1.25" fill="currentColor"/><rect x="7.6" y="19" width="2.3" height="4" rx="1.15" fill="currentColor"/><rect x="14.1" y="19" width="2.3" height="4" rx="1.15" fill="currentColor"/></svg>
+            <span style="display:flex; flex-direction:column; line-height:1.15; text-align:left;">
+              <span style="font-family:'Oswald',sans-serif; font-weight:500; font-size:9px; letter-spacing:.14em; text-transform:uppercase; opacity:.82;">Get it on</span>
+              <span style="font-family:'DM Serif Display',serif; font-size:18px;">Google Play</span>
+            </span>
+          </a>
+        </div>
+        <div style="font-family:'Oswald',sans-serif; font-weight:500; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:18px;">Free to play · iPhone &amp; Android</div>
+      </div>
+      <div style="display:flex; justify-content:center;">
+        <div style="width:294px; background:#141210; border-radius:46px; padding:10px; box-shadow:0 40px 70px -30px rgba(58,36,23,.55);">
+          <div style="position:relative; border-radius:37px; overflow:hidden; aspect-ratio:1080/2372; background:var(--paper);">
+            <img src="uploads/Screenshot_20260703_100818_CourseMate.jpg" alt="CourseMate app home screen" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- pennant divider -->
+    <div style="display:flex; align-items:center; gap:12px; padding:8px 0 0;">
+      <span style="flex:1; height:3px; background:var(--green);"></span>
+      <span style="width:0; height:0; border-top:7px solid transparent; border-bottom:7px solid transparent; border-left:11px solid var(--orange);"></span>
+      <span style="flex:1; height:3px; background:var(--green);"></span>
+    </div>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="features" data-reveal="true" style="padding:64px 0 20px;">
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:34px;">
+        <span style="font-family:'Oswald',sans-serif; font-weight:600; font-size:15px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); white-space:nowrap;">Everything for a better round</span>
+        <span style="flex:1; height:2px; background:var(--divider);"></span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
+          <div style="background:#fff; border:1.5px solid var(--ink); border-radius:12px; padding:24px 24px 26px; transition:transform .18s ease, box-shadow .18s ease; cursor:default;" style-hover="transform:translateY(-4px); box-shadow:0 16px 30px -18px rgba(58,36,23,.45)">
+            <div style="display:flex; align-items:center; gap:9px; padding-bottom:14px; border-bottom:1.5px dashed var(--dash); margin-bottom:16px;">
+              <span style="width:6px; height:6px; background:var(--orange); border-radius:50%;"></span>
+              <span style="font-family:'Oswald',sans-serif; font-weight:600; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--orange);">{{ f.tag }}</span>
+              <sc-if value="{{ f.pro }}" hint-placeholder-val="{{ false }}">
+                <span style="margin-left:auto; font-family:'Oswald',sans-serif; font-weight:600; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--paper); background:var(--green); padding:3px 8px; border-radius:5px;">Pro</span>
+              </sc-if>
+            </div>
+            <h3 style="font-family:'DM Serif Display',serif; font-size:23px; line-height:1.05; color:var(--green); margin:0 0 10px;">{{ f.title }}</h3>
+            <p style="font-size:14.5px; line-height:1.55; color:var(--bodysoft); margin:0;">{{ f.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="how" data-reveal="true" style="padding:56px 0 20px;">
+      <div style="font-family:'Oswald',sans-serif; font-weight:600; font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:var(--orange); margin-bottom:6px;">Tee it up</div>
+      <h2 style="font-family:'DM Serif Display',serif; font-size:40px; color:var(--ink); margin:0 0 34px;">Three taps to a card</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px;">
+        <div style="display:flex; flex-direction:column;">
+          <div style="width:100%; max-width:216px; margin:0 auto 26px; background:#141210; border-radius:38px; padding:8px; box-shadow:0 30px 55px -28px rgba(58,36,23,.5);">
+            <div style="position:relative; border-radius:31px; overflow:hidden; aspect-ratio:1080/2401; background:var(--paper);">
+              <img src="uploads/Course%20Setuo.jpg" alt="Start a round" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+          </div>
+          <div style="border-top:2px solid var(--ink); padding-top:16px; display:flex; align-items:baseline; gap:14px;">
+            <span style="font-family:'DM Serif Display',serif; font-size:44px; line-height:.9; color:var(--orange); flex:none;">01</span>
+            <div>
+              <h3 style="font-family:'DM Serif Display',serif; font-size:22px; color:var(--green); margin:0 0 6px;">Start a round</h3>
+              <p style="font-size:14.5px; line-height:1.55; color:var(--bodysoft); margin:0;">Solo or with mates. Pick your course, format and tees.</p>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column;">
+          <div style="width:100%; max-width:216px; margin:0 auto 26px; background:#141210; border-radius:38px; padding:8px; box-shadow:0 30px 55px -28px rgba(58,36,23,.5);">
+            <div style="position:relative; border-radius:31px; overflow:hidden; aspect-ratio:1080/2409; background:var(--paper);">
+              <img src="uploads/Scoring.jpg" alt="Tap your score" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+          </div>
+          <div style="border-top:2px solid var(--ink); padding-top:16px; display:flex; align-items:baseline; gap:14px;">
+            <span style="font-family:'DM Serif Display',serif; font-size:44px; line-height:.9; color:var(--orange); flex:none;">02</span>
+            <div>
+              <h3 style="font-family:'DM Serif Display',serif; font-size:22px; color:var(--green); margin:0 0 6px;">Tap your score</h3>
+              <p style="font-size:14.5px; line-height:1.55; color:var(--bodysoft); margin:0;">Hole by hole, one tap. Undo a slip in a second.</p>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column;">
+          <div style="width:100%; max-width:216px; margin:0 auto 26px; background:#141210; border-radius:38px; padding:8px; box-shadow:0 30px 55px -28px rgba(58,36,23,.5);">
+            <div style="position:relative; border-radius:31px; overflow:hidden; aspect-ratio:1080/2419; background:var(--paper);">
+              <img src="uploads/Round%20summary.jpg" alt="Read the card" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+          </div>
+          <div style="border-top:2px solid var(--ink); padding-top:16px; display:flex; align-items:baseline; gap:14px;">
+            <span style="font-family:'DM Serif Display',serif; font-size:44px; line-height:.9; color:var(--orange); flex:none;">03</span>
+            <div>
+              <h3 style="font-family:'DM Serif Display',serif; font-size:22px; color:var(--green); margin:0 0 6px;">Read the card</h3>
+              <p style="font-size:14.5px; line-height:1.55; color:var(--bodysoft); margin:0;">Winner, stats and bragging rights — all sorted.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" data-reveal="true" style="padding:60px 0 20px;">
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px;">
+        <span style="font-family:'Oswald',sans-serif; font-weight:600; font-size:15px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); white-space:nowrap;">Common questions</span>
+        <span style="flex:1; height:2px; background:var(--divider);"></span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+          <div style="background:#fff; border:1.5px solid var(--ink); border-radius:12px; overflow:hidden;">
+            <button onClick="{{ q.toggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px; background:none; border:none; padding:20px 26px; cursor:pointer; text-align:left;">
+              <span style="font-family:'DM Serif Display',serif; font-size:21px; color:var(--green);">{{ q.q }}</span>
+              <span style="{{ q.iconStyle }}">+</span>
+            </button>
+            <div style="{{ q.bodyStyle }}">
+              <p style="font-size:15px; line-height:1.6; color:var(--bodysoft); margin:0; padding:0 26px 22px; max-width:680px;">{{ q.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section id="pricing" data-reveal="true" style="padding:60px 0 20px;">
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:34px;">
+        <span style="font-family:'Oswald',sans-serif; font-weight:600; font-size:15px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); white-space:nowrap;">Free &amp; Pro</span>
+        <span style="flex:1; height:2px; background:var(--divider);"></span>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch;">
+
+        <!-- FREE -->
+        <div style="background:#fff; border:1.5px solid var(--ink); border-radius:14px; padding:34px; display:flex; flex-direction:column;">
+          <div style="font-family:'Oswald',sans-serif; font-weight:600; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--orange);">The basics</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:44px; line-height:1; color:var(--ink); margin:10px 0 0;">Free</div>
+          <p style="font-size:14.5px; line-height:1.5; color:var(--bodysoft); margin:8px 0 0;">Everything you need to keep score and play with your mates. Free forever.</p>
+          <div style="border-top:1.5px dashed var(--dash); margin:22px 0;"></div>
+          <div style="display:flex; flex-direction:column; gap:13px;">
+            <sc-for list="{{ freePlan }}" as="item" hint-placeholder-count="7">
+              <div style="display:flex; align-items:flex-start; gap:11px;">
+                <svg viewBox="0 0 16 16" width="16" height="16" style="flex:none; margin-top:2px;"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="#2E5E3A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-size:14.5px; line-height:1.4; color:var(--ink);">{{ item }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin-top:auto; padding-top:26px; text-align:center; font-family:'Oswald',sans-serif; font-weight:500; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0;">Free forever · no card required</p>
+        </div>
+
+        <!-- PRO -->
+        <div style="background:var(--green); border-radius:14px; padding:34px; position:relative; overflow:hidden; display:flex; flex-direction:column;">
+          <div style="position:absolute; inset:0; background:repeating-linear-gradient(135deg, transparent 0 18px, rgba(240,229,207,.05) 18px 36px);"></div>
+          <div style="position:relative; display:flex; flex-direction:column; height:100%;">
+            <div style="font-family:'Oswald',sans-serif; font-weight:600; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold);">Level up</div>
+            <div style="display:flex; align-items:baseline; gap:12px; margin:10px 0 0;">
+              <span style="font-family:'DM Serif Display',serif; font-size:44px; line-height:1; color:var(--paper);">Pro</span>
+              <span style="font-family:'Oswald',sans-serif; font-weight:600; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink); background:var(--gold); padding:4px 9px; border-radius:5px;">30-day free trial</span>
+            </div>
+            <p style="font-size:14.5px; line-height:1.5; color:rgba(240,229,207,.85); margin:8px 0 0;">For the golfer who wants the full picture of every round.</p>
+            <div style="border-top:1.5px dashed rgba(240,229,207,.28); margin:22px 0;"></div>
+            <div style="font-family:'Oswald',sans-serif; font-weight:600; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:15px;">Everything in Free, plus</div>
+            <div style="display:flex; flex-direction:column; gap:13px;">
+              <sc-for list="{{ proPlan }}" as="item" hint-placeholder-count="4">
+                <div style="display:flex; align-items:flex-start; gap:11px;">
+                  <svg viewBox="0 0 16 16" width="16" height="16" style="flex:none; margin-top:2px;"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="#E6B45A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span style="font-size:14.5px; line-height:1.4; color:var(--paper);">{{ item }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <p style="margin-top:auto; padding-top:26px; text-align:center; font-family:'Oswald',sans-serif; font-weight:500; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(240,229,207,.6); margin-bottom:0;">Start your free trial &amp; upgrade inside the app</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== DOWNLOAD ===== -->
+    <section id="download" data-reveal="true" style="padding:52px 0 68px;">
+      <div style="background:var(--green); border-radius:16px; padding:60px 56px; position:relative; overflow:hidden; text-align:center;">
+        <div style="position:absolute; inset:0; background:repeating-linear-gradient(135deg, transparent 0 18px, rgba(240,229,207,.05) 18px 36px);"></div>
+        <div style="position:relative;">
+          <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span style="width:44px; height:3px; background:var(--gold);"></span>
+            <span style="width:0; height:0; border-top:6px solid transparent; border-bottom:6px solid transparent; border-left:10px solid var(--orange);"></span>
+            <span style="width:44px; height:3px; background:var(--gold);"></span>
+          </div>
+          <h2 style="font-family:'DM Serif Display',serif; font-size:46px; line-height:1.05; color:var(--paper); margin:0 0 6px;">Start your first round.</h2>
+          <p style="font-size:16px; line-height:1.55; color:rgba(240,229,207,.82); margin:0 auto 30px; max-width:440px;">Grab CourseMate on your phone, gather your mates, and let us keep the card.</p>
+          <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+            <a href="#" aria-label="Download on the App Store" style="display:inline-flex; align-items:center; gap:12px; background:var(--paper); color:var(--ink); padding:12px 24px; border-radius:12px; text-decoration:none; transition:transform .15s ease;" style-hover="transform:translateY(-2px)">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="flex:none"><path d="M17.05 12.54c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.16-.47 7.83 1.3 10.4.86 1.25 1.89 2.66 3.24 2.61 1.3-.05 1.79-.84 3.36-.84s2.01.84 3.39.81c1.4-.02 2.29-1.28 3.15-2.54.99-1.46 1.4-2.87 1.42-2.94-.03-.02-2.72-1.05-2.75-4.14zM14.9 4.6c.72-.87 1.2-2.08 1.07-3.28-1.03.04-2.28.68-3.02 1.55-.66.77-1.24 2-1.09 3.18 1.15.09 2.32-.58 3.06-1.45z"/></svg>
+              <span style="display:flex; flex-direction:column; line-height:1.15; text-align:left;">
+                <span style="font-family:'Oswald',sans-serif; font-weight:500; font-size:9px; letter-spacing:.14em; text-transform:uppercase; opacity:.7;">Download on the</span>
+                <span style="font-family:'DM Serif Display',serif; font-size:18px;">App Store</span>
+              </span>
+            </a>
+            <a href="#" aria-label="Get it on Google Play" style="display:inline-flex; align-items:center; gap:12px; background:var(--paper); color:var(--ink); padding:12px 24px; border-radius:12px; text-decoration:none; transition:transform .15s ease;" style-hover="transform:translateY(-2px)">
+              <svg viewBox="0 0 24 24" width="24" height="24" style="flex:none"><line x1="7.4" y1="2.7" x2="8.9" y2="4.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="16.6" y1="2.7" x2="15.1" y2="4.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M4.4 11a7.6 7.6 0 0 1 15.2 0z" fill="currentColor"/><circle cx="9" cy="7.9" r="1" fill="var(--paper)"/><circle cx="15" cy="7.9" r="1" fill="var(--paper)"/><rect x="4.4" y="12" width="15.2" height="7.5" rx="1.6" fill="currentColor"/><rect x="2" y="12.4" width="2.5" height="6.2" rx="1.25" fill="currentColor"/><rect x="19.5" y="12.4" width="2.5" height="6.2" rx="1.25" fill="currentColor"/><rect x="7.6" y="19" width="2.3" height="4" rx="1.15" fill="currentColor"/><rect x="14.1" y="19" width="2.3" height="4" rx="1.15" fill="currentColor"/></svg>
+              <span style="display:flex; flex-direction:column; line-height:1.15; text-align:left;">
+                <span style="font-family:'Oswald',sans-serif; font-weight:500; font-size:9px; letter-spacing:.14em; text-transform:uppercase; opacity:.7;">Get it on</span>
+                <span style="font-family:'DM Serif Display',serif; font-size:18px;">Google Play</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="border-top:1px solid var(--divider);">
+    <div style="max-width:1160px; margin:0 auto; padding:26px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <span style="font-family:'DM Serif Display',serif; font-size:19px; color:var(--green);">CourseMate</span>
+      <div style="display:flex; align-items:center; gap:28px;">
+        <a href="Terms%20of%20Service.dc.html" style="font-family:'Oswald',sans-serif; font-weight:500; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted2); text-decoration:none; transition:color .2s ease;" style-hover="color:var(--green)">Terms of Service</a>
+        <a href="Privacy%20Policy.dc.html" style="font-family:'Oswald',sans-serif; font-weight:500; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted2); text-decoration:none; transition:color .2s ease;" style-hover="color:var(--green)">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1160,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { openFaq: 0 };
+
+  get faqData() {
+    return [
+      { q: 'Do I need an account?', a: 'Yes — a quick free account lets you add friends, invite them to a game instantly, and see how your stats stack up against your mates.' },
+      { q: 'How do my mates join a round?', a: 'Invite friends straight from your friends list, or share the room code for them to punch in. Everyone scores on their own phone and the card updates live for the whole group.' },
+      { q: 'Which courses are included?', a: 'Over 22,000 courses around the world, with holes, distances and par. Playing somewhere that isn\u2019t listed? Add it manually and start playing.' },
+      { q: 'What can I play?', a: 'Stroke play, Stableford, four-ball or Ambrose, over front 9, back 9 or the full 18, solo or with a full group. Anyone can play any format they\u2019re invited to \u2014 creating rounds in formats beyond stroke play is a Pro feature.' },
+      { q: 'Is it free?', a: 'Yes \u2014 the core is free forever: solo and multiplayer rounds, stroke play, 22,000+ courses, one-tap scoring, your auto handicap and the Clubhouse. CourseMate Pro adds deeper insight stats, the ability to create rounds in every game format, unlimited history and Pro shot-by-shot scoring.' },
+      { q: 'iPhone and Android?', a: 'Both. Grab CourseMate from the App Store or Google Play and you\u2019re set.' },
+    ];
+  }
+
+  renderVals() {
+    const open = this.state.openFaq;
+    return {
+      navlinks: [
+        { label: 'Features', href: '#features' },
+        { label: 'How it works', href: '#how' },
+        { label: 'FAQ', href: '#faq' },
+        { label: 'Pricing', href: '#pricing' },
+        { label: 'Download', href: '#download' },
+      ],
+      features: [
+        { tag: 'Mates', title: 'Play with your mates', body: 'Invite friends from your list or share a room code. Every score updates for the whole group, live.' },
+        { tag: 'Clubhouse', title: 'Cheer on your mates', body: 'Like and comment on your mates\u2019 rounds and achievements — a bit of banter earned after every card.' },
+        { tag: 'Formats', title: 'Play it your way', pro: true, body: 'Create rounds in Stableford, four-ball or Ambrose with Pro. Invited mates can play any format for free.' },
+        { tag: 'Handicap', title: 'A handicap that keeps up', body: 'Play three rounds and CourseMate works out your handicap automatically, so mates of every level get a fair game.' },
+        { tag: 'Courses', title: 'Every course, on hand', body: 'Over 22,000 courses worldwide with accurate holes, distances and par. Not there? Add yours and tee off.' },
+        { tag: 'Rounds', title: 'Front nine or the full lap', body: 'Front 9, back 9 or all 18. Choose your tees — we keep the card for you.' },
+        { tag: 'Scoring', title: 'Score in a single tap', body: 'Simple plus and minus with haptics. Fix a slip and track your card hole by hole.' },
+        { tag: 'Summary', title: 'The card, read back', body: 'Birdies, pars, bogeys and your run of form — every round summarised clean.' },
+        { tag: 'No fuss', title: 'Set up in seconds', body: 'Start a round, gather the group and tap your way round. No clutter, no faff.' },
+      ],
+      steps: [
+        { n: '01', title: 'Start a round', body: 'Solo or with mates. Pick your course, format and tees.', img: 'uploads/Course%20Setuo.jpg' },
+        { n: '02', title: 'Tap your score', body: 'Hole by hole, one tap. Undo a slip in a second.', img: 'uploads/Scoring.jpg' },
+        { n: '03', title: 'Read the card', body: 'Winner, stats and bragging rights — all sorted.', img: 'uploads/Round%20summary.jpg' },
+      ],
+      freePlan: [
+        'Solo & multiplayer rounds',
+        'Create stroke-play rounds',
+        'Join any format you\u2019re invited to',
+        '22,000+ courses worldwide',
+        'One-tap scoring & undo',
+        'Auto handicap after 3 rounds',
+        'Your last 3 rounds & summaries',
+        'Like & comment in the Clubhouse',
+      ],
+      proPlan: [
+        'Deeper insight stats',
+        'Create rounds in any format — Stableford, four-ball & Ambrose',
+        'Unlimited round history',
+        'Pro scoring — drives, irons & putts per hole',
+      ],
+      faqs: this.faqData.map((f, i) => ({
+        q: f.q,
+        a: f.a,
+        toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? null : i })),
+        iconStyle: {
+          display: 'inline-block', flex: 'none', fontFamily: "'Hanken Grotesk',sans-serif",
+          fontWeight: 300, fontSize: '30px', lineHeight: 1, color: '#C56A28',
+          transition: 'transform .3s ease', transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)',
+        },
+        bodyStyle: {
+          overflow: 'hidden',
+          maxHeight: open === i ? '260px' : '0px',
+          opacity: open === i ? 1 : 0,
+          transition: 'max-height .35s ease, opacity .3s ease',
+        },
+      })),
+    };
+  }
+
+  componentDidMount() {
+    // Scroll reveal — set initial hidden state only when JS runs, so no-JS stays visible.
+    const reveals = Array.from(document.querySelectorAll('[data-reveal]'));
+    reveals.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity .6s ease, transform .6s ease';
+    });
+    const revealIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          revealIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => revealIO.observe(el));
+
+    // Scroll-spy nav highlight.
+    const links = Array.from(document.querySelectorAll('[data-nav]'));
+    const sections = links
+      .map(l => { const h = l.getAttribute('href'); return h && h.startsWith('#') ? document.querySelector(h) : null; })
+      .filter(Boolean);
+    const setActive = (id) => {
+      links.forEach(l => {
+        const on = l.getAttribute('href') === id;
+        l.style.color = on ? '#2E5E3A' : '#3a2417';
+        l.style.borderBottomColor = on ? '#C56A28' : 'transparent';
+      });
+    };
+    const spyIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) setActive('#' + e.target.id); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => spyIO.observe(s));
+  }
+}
+</script>
+</body>
+</html>

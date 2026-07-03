@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #F0E5CF;
+  --paper2: #E7DBC0;
+  --green: #2E5E3A;
+  --green-d: #25482f;
+  --ink: #3a2417;
+  --orange: #C56A28;
+  --gold: #E6B45A;
+  --muted: #9a8160;
+  --muted2: #8a6f52;
+  --divider: #d6c39c;
+  --dash: #cdb793;
+  --bodysoft: #6f5a3f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-hanken), sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+section[id] {
+  scroll-margin-top: 88px;
+}
+
+::selection {
+  background: #C56A28;
+  color: #F0E5CF;
+}
+
+/* Hover states (design's style-hover attributes) */
+.btn-cta:hover {
+  transform: translateY(-1px);
+  background: var(--green-d) !important;
+}
+
+.btn-store:hover {
+  transform: translateY(-2px);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -18px rgba(58, 36, 23, 0.45);
+}
+
+.footer-link:hover {
+  color: var(--green) !important;
+}
+
+/* FAQ accordion body — class-based so the height cap can grow on small screens */
+.faq-body {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height .35s ease, opacity .3s ease;
+}
+
+.faq-body.open {
+  max-height: 260px;
+  opacity: 1;
+}
+
+/* Responsive collapse — the design is authored at 1160px */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none !important;
+  }
+  .hero-grid,
+  .steps-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .features-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .pad-40 {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .hero-h1 {
+    font-size: 46px !important;
+  }
+  .hero-grid {
+    padding-top: 28px !important;
+  }
+  .hero-note {
+    text-align: center !important;
+  }
+  .dl-box {
+    padding: 44px 24px !important;
+  }
+  .dl-h2 {
+    font-size: 34px !important;
+  }
+  .legal-h1 {
+    font-size: 40px !important;
+  }
+  .faq-body.open {
+    max-height: 500px;
+  }
+
+  /* Hero store buttons: keep on one row, shrink to fit the screen width */
+  .store-row {
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+  }
+  .store-row .btn-store {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding: 10px 8px !important;
+    gap: 8px !important;
+  }
+  .store-row .btn-store svg {
+    width: 20px;
+    height: 20px;
+  }
+  .store-row .store-top {
+    font-size: 7.5px !important;
+    white-space: nowrap;
+  }
+  .store-row .store-name {
+    font-size: 15px !important;
+    white-space: nowrap;
+  }
+}
